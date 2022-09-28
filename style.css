@@ -1,0 +1,13 @@
+body {
+    display:flex;
+}
+body > * {
+    flex: 1;
+}
+.invisible {
+    visibility: hidden;
+}
+
+.addprojectdiv, .addtasksdiv {
+    position: fixed;
+}
