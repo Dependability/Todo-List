@@ -7,35 +7,69 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="project-side">
-    <h2>Projects</h2>
-    <button class="projbut" type="button">New Project</button>
-    <div class="projects">
-        <ol class="project-list"></ol>
-    </div>
-    </div>
-    <div class="tasks-side">
-        <h2>Todo List</h2>
-    <div class="tasks">
-        <div class="newTask">
-            <button class="taskbut">New Task</button>
-        </div>
-        <div class="task-header">
-            <h3>Tasks</h3>
-            <h3>Due Date</h3>
-        </div>
-        <ol class="tasklist"></ol>
-    </div>
-    </div>
-    <div class="invisible addprojectdiv"><input type="text" id="add-project-text"><button class="confirm">Confirm</button></div>
+    <header>
+        <h1>Todo List</h1>
+    </header>
+    <main>
+        <nav>
+            <div class="project-side">
+                <h2>Projects</h2>
+                <div class="projects">
+                    <ol class="project-list"></ol>
+                </div>
+                <div class="invisible addprojectdiv">
+                    <input type="text" id="add-project-text">
+                    <div class="buttons">
+                        <button class="confirm">Confirm</button>
+                        <button class="cancel">Cancel</button>
+                    </div>
+                    
+                </div>
+                <button class="projbut" type="button">New Project</button>
+            </div>
+            <div class="tasks-side">
+                
+                <div class="tasks">
+                    <div class="task-header">
+                        <h3>Tasks</h3>
+                        <div class="project-name">Sample</div>
+                        <h3>Due Date</h3>
+                    </div>
+                    <ol class="tasklist"></ol>
+                    <div class="newTask">
+                        <button class="taskbut">New Task</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </main>
+    <footer>
+        <div>Copyright C 2022 Dependability</div>
+    </footer>
+    
     <div class="invisible addtasksdiv">
+        <div class="addtasksdiv-wrapper">
         <input type="text" id="add-task-title">
         <textarea id="add-task-description"></textarea>
         <input type="date" id="add-task-date">
         <input type="text" id="add-task-priority">
         
         
-        <button class="confirm">Confirm</button></div>
-    
+        
+        <button class="confirm">Confirm</button>
+    </div>
+    </div>
 
+<div class="task-view-wrapper">
+<div class="task-view">
+    <button>X</button>
+    <h2>Task Name</h2>
+    <h3>Description</h3>
+    <p class="task-description">I did this</p>
+    <h3>Priority</h3>
+    <p class="task-priority">High</p>
+    <h3>Due Date</h3>
+    <p class="due-date">9/27/2022</p>
+</div>
+</div>
 </body></html>
