@@ -6,10 +6,12 @@ class Project {
 
     addTask(taskObj) {
         this.tasks.push(taskObj);
+        
     }
     removeTask(taskObj) {
-        //this.tasks
-        console.log("Work in progress.")
+        let taskInd = this.tasks.findIndex((elem) => elem === taskObj);
+        this.tasks.splice(taskInd, 1);
+        
     }
 
     

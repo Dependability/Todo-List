@@ -1,3 +1,4 @@
+
 class DOMUpdater {
 
     resetAll() {
@@ -8,24 +9,41 @@ class DOMUpdater {
         
     }
 
-    viewTask(task) {
+    viewTask(task, project) {
         const taskWrap = document.querySelector('.task-view-wrapper');
         const taskView = document.querySelector('.task-view');
+
+        const delButton = document.createElement('button');
+        delButton.textContent = 'Delete Task';
+        delButton.classList.add('deleteTask')
+        taskView.appendChild(delButton)
 
         taskView.querySelector('h2').textContent = task.title;
         taskView.querySelector('.task-description').textContent = task.description;
         taskView.querySelector('.task-priority').textContent = task.priority;
+        taskView.querySelector('.task-priority').classList.add(task.priority);
         taskView.querySelector('.due-date').textContent = task.dueDate;
 
-        taskWrap.classList.remove('invisible')
+        taskWrap.classList.remove('invisible');
+
+        delButton.addEventListener('click', () => {
+            project.removeTask(task);
+            this.showCurrentProject(project);
+            taskWrap.classList.add('invisible');
+            localStorage.setItem('projects', JSON.stringify(projects))
+        })
+
+
+
 
     }
 
 
-    addTaskToDom(task) {
+    addTaskToDom(task, project) {
 
         const taskLi = document.createElement('li');
         const taskLeft = document.createElement('div');
+        const taskDelete = document.createElement('button');
         taskLi.classList.add('task-item');
         taskLeft.classList.add('left');
 
@@ -38,6 +56,7 @@ class DOMUpdater {
         taskTitle.textContent = task.title;
         taskDesc.textContent = task.description.length > 15 ? task.description.substring(0,15) + '...' : task.description;
         taskDD.textContent = task.dueDate;
+        
 
         task.completed ? taskC.setAttribute('checked', '') : '';
         
@@ -57,7 +76,7 @@ class DOMUpdater {
 
         taskLi.addEventListener('click', () => {
             console.log(task.description);
-            this.viewTask(task)
+            this.viewTask(task, project)
         })
 
         taskC.addEventListener('click', (e) => e.stopPropagation());
@@ -74,7 +93,7 @@ class DOMUpdater {
         
 
         project.tasks.forEach(element => {
-            this.addTaskToDom(element)
+            this.addTaskToDom(element, project)
         });
         const projectTitle = document.querySelector('.tasks-side .project-name');
         projectTitle.textContent = `Project: ${project.name}`
